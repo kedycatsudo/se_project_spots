@@ -1,21 +1,31 @@
-# Project 3: Spots
+## Project Description
+Spots is a responsive social media platform that allows users to share and interact with photos of interesting places. The platform features a clean, modern interface with user profiles and a photo gallery layout.
 
-### Overview  
+### Functionality
+* Responsive design that works on desktop, tablet, and mobile devices
+* User profile section with edit capabilities
+* Photo gallery with like functionality
+* Grid-based card layout for optimal photo presentation
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+## Technologies and Techniques Used
+* **HTML5** - Semantic markup for better accessibility and SEO
+* **CSS3** - Modern styling with Flexbox and Grid layouts
+* **BEM Methodology** - For scalable and maintainable CSS architecture
+* **Responsive Design** - Media queries for different screen sizes
+* **Git** - Version control and project deployment
+
+## Project Features
+[Add screenshots or GIFs of your project here]
+
+## Project Link
+[Add your GitHub Pages link here]
+
+## Project Video Demo
+[Add your video demo link here]
+
+## Future Improvements
+* Add user authentication
+* Implement photo upload functionality
+* Add comment system for photos
+* Enhance like button with animations
+
