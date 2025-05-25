@@ -20,14 +20,36 @@
 .card__title {
   margin: 0 auto 0 0;
   color: rgba(33, 33, 33, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
 .card__like-button {
   background-image: url(../images/like_icon.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   width: 23px;
   height: 20px;
   border: none;
   background-color: transparent;
   margin: auto 0 0;
-  padding: 0;
+  padding: 0 20px 0 0;
+}
+
+@media screen and (max-width: 627px) {
+  .card__image {
+    height: 288px;
+    width: 288px;
+  }
+  .card__content {
+    font-size: 16px;
+  }
+
+  .card__like-button {
+    width: 20px;
+    height: 18px;
+  }
 }
