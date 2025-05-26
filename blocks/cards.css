@@ -1,8 +1,10 @@
 .cards {
-  padding: 20px 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .cards__list {
+  overflow: hidden;
   list-style-type: none;
   margin: 0;
   padding: 40px 0;

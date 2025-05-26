@@ -39,6 +39,18 @@
   padding: 0 20px 0 0;
 }
 
+.card__like-button:hover {
+  cursor: pointer;
+  background-image: url(../images/dark_llike.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  margin: auto 0 0;
+  padding: 0 20px 0 0;
+  opacity: 1;
+}
 @media screen and (max-width: 627px) {
   .card__image {
     height: 288px;
