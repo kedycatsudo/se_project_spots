@@ -5,7 +5,7 @@
   color: rgba(33, 33, 33, 1);
   font-size: 20px;
   line-height: 1.2;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .page__section {

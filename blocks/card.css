@@ -6,7 +6,7 @@
   width: 413px;
   height: 413px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
   display: block;
 }
 
@@ -18,15 +18,19 @@
 }
 
 .card__title {
-  margin: 0 auto 0 0;
+  margin: 0;
   color: rgba(33, 33, 33, 1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.2;
+
+  max-width: 353px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .card__like-button {
+  /*you put needs correcting for like button because is not the dark one but on figma if its hover it use black icon. when is not hover , it uses reguler icon*/
   background-image: url(../images/like_icon.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,7 +40,8 @@
   border: none;
   background-color: transparent;
   margin: auto 0 0;
-  padding: 0 20px 0 0;
+  padding: 0;
+  /*cursor porinter in the hover psuedo code*/
 }
 
 .card__like-button:hover {
@@ -52,6 +57,10 @@
   opacity: 1;
 }
 @media screen and (max-width: 627px) {
+  .card__title {
+    max-width: 235px;
+  }
+
   .card__image {
     height: 288px;
     width: 288px;
