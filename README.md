@@ -1,4 +1,4 @@
-## Project Description
+﻿## Project Description
 Spots is a responsive social media platform that allows users to share and interact with photos of interesting places. The platform features a clean, modern interface with user profiles and a photo gallery layout.
 
 ### Functionality
@@ -14,8 +14,21 @@ Spots is a responsive social media platform that allows users to share and inter
 * **Responsive Design** - Media queries for different screen sizes
 * **Git** - Version control and project deployment
 
-## Project Features
-[Add screenshots or GIFs of your project here]
+ ## Key Features
+
+Walk through each feature and why it matters:
+
+    Responsive Design:
+    “It adapts to all screen sizes using media queries and flexible layouts.”
+
+    User Profile Section:
+    “Users can view and edit their profiles, which is essential for personalization.”
+
+    Photo Gallery + Like Button:
+    “Photos are displayed in a card-based grid. Each card has a like button, creating interaction.”
+
+    Clean Grid Layout:
+    “Photos are visually arranged using CSS Grid and Flexbox for consistency and performance.”
 
 ## Project Link
 [Add your GitHub Pages link here]
