@@ -73,6 +73,10 @@
   background-image: url(../images/close_icon.svg);
 }
 
+.modal__close-btn:hover {
+  cursor: pointer;
+}
+
 .modal__submit-btn {
   width: 156px;
   height: 52px;
