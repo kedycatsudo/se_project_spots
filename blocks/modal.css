@@ -26,7 +26,9 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 100%;
-  letter-spacing: 0%;
+
+  color: rgba(33, 33, 33);
+  opacity: 1;
 }
 
 .modal__form {
@@ -36,7 +38,12 @@
 
 .modal__label {
   margin: 0 0 32px;
-  opacity: 0.7;
+
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  color: #000000b3;
 }
 
 .modal__input {
@@ -52,6 +59,13 @@
   opacity: 1;
   box-sizing: border-box;
   border-radius: 8px;
+  border: 1px solid rgba(33, 33, 33, 0.4);
+  color: rgba(33, 33, 33, 1);
+}
+
+.modal__input:hover {
+  border: 1px solid rgba(33, 33, 33, 1);
+  cursor: pointer;
 }
 
 .modal__container {
@@ -79,19 +93,26 @@
 
 .modal__close-btn:hover {
   cursor: pointer;
+  color: rgba(33, 33, 33, 0.8);
 }
 
 .modal__submit-btn {
   width: 156px;
   height: 52px;
   background: rgba(33, 33, 33, 1);
-  color: white;
+  color: rgba(252, 245, 229, 1);
   font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
   border: none;
   border-radius: 8px;
 }
-modal__input::placeholder {
-  background: rgba(33, 33, 33, 0.3);
+
+.modal__submit-btn:hover {
+  cursor: pointer;
+}
+.modal__input::placeholder {
+  color: rgba(33, 33, 33, 0.3);
 }
 
 @media screen and (max-width: 627px) {

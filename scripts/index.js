@@ -3,8 +3,8 @@ const profileEditModal = document.querySelector(`#edit-profile-modal`);
 const profileClsBtn = profileEditModal.querySelector(`.modal__close-btn`);
 
 const profileAddBtn = document.querySelector(`.profile__add-btn`);
-const profileAddModal = document.querySelector(`#new-post-modal`);
-const profileAddClsBtn = profileAddModal.querySelector(`.modal__close-btn`);
+const newPostModal = document.querySelector(`#new-post-modal`);
+const newPostClsBtn = newPostModal.querySelector(`.modal__close-btn`);
 
 const profileName = document.querySelector(`.profile__name`);
 const profileDescription = document.querySelector(`.profile__description`);
@@ -14,27 +14,28 @@ const profileDescriptionInput = document.querySelector(
   `#profile-description-input`
 );
 
-const profileImgInput = profileAddModal.querySelector(`#card-img-input`);
-const profileCaptionInput = profileAddModal.querySelector(
-  `#profile-caption-input`
-);
+const profileModalForm = profileEditModal.querySelector(`.modal__form`);
+const postModalForm = newPostModal.querySelector(`.modal__form`);
 
-function profileFormSubmitHandler(evt) {
+const cardImgLink = newPostModal.querySelector(`#card-img-input`);
+const cardCaptionInput = newPostModal.querySelector(`#card-caption-input`);
+
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   profileEditModal.classList.remove(`modal_is-opened`);
 }
 
-function profileAddSubmit(evt) {
+function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
-  console.log(profileImgInput.value);
-  console.log(profileCaptionInput.value);
-  profileAddModal.classList.remove(`modal_is-opened`);
+  console.log(cardImgLink.value);
+  console.log(cardCaptionInput.value);
+  newPostModal.classList.remove(`modal_is-opened`);
 }
 
-profileEditModal.addEventListener(`submit`, profileFormSubmitHandler);
-profileAddModal.addEventListener(`submit`, profileAddSubmit);
+profileModalForm.addEventListener(`submit`, handleProfileFormSubmit);
+postModalForm.addEventListener(`submit`, handleNewPostFormSubmit);
 
 profileEditbtn.addEventListener(`click`, function () {
   profileEditModal.classList.add(`modal_is-opened`);
@@ -47,8 +48,8 @@ profileClsBtn.addEventListener(`click`, function () {
 });
 
 profileAddBtn.addEventListener(`click`, function () {
-  profileAddModal.classList.add(`modal_is-opened`);
+  newPostModal.classList.add(`modal_is-opened`);
 });
-profileAddClsBtn.addEventListener(`click`, function () {
-  profileAddModal.classList.remove(`modal_is-opened`);
+newPostClsBtn.addEventListener(`click`, function () {
+  newPostModal.classList.remove(`modal_is-opened`);
 });
