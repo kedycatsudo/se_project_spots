@@ -39,7 +39,7 @@
 .modal__label {
   margin: 0 0 32px;
 
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
@@ -88,12 +88,14 @@
   background-color: transparent;
   padding: 0;
   margin: 0;
+  opacity: 40%;
   background-image: url(../images/close_icon.svg);
 }
 
 .modal__close-btn:hover {
   cursor: pointer;
-  color: rgba(33, 33, 33, 0.8);
+  color: rgba(33, 33, 33);
+  opacity: 1;
 }
 
 .modal__submit-btn {
@@ -109,6 +111,7 @@
 }
 
 .modal__submit-btn:hover {
+  opacity: 0.8;
   cursor: pointer;
 }
 .modal__input::placeholder {
