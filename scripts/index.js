@@ -1,3 +1,10 @@
+function openModal(modalElement) {
+  modalElement.classList.add("modal_is-opened");
+}
+function closeModal(modalElement) {
+  modalElement.classList.remove("modal_is-opened");
+}
+
 let initialCards = [
   {
     name: "Val Thorens",
@@ -56,34 +63,34 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  profileEditModal.classList.remove(`modal_is-opened`);
+  closeModal(profileEditModal);
 }
 
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
   console.log(cardImgLink.value);
   console.log(cardCaptionInput.value);
-  newPostModal.classList.remove(`modal_is-opened`);
+  closeModal(newPostModal);
 }
 
 profileModalForm.addEventListener(`submit`, handleProfileFormSubmit);
 postModalForm.addEventListener(`submit`, handleNewPostFormSubmit);
 
 profileEditbtn.addEventListener(`click`, function () {
-  profileEditModal.classList.add(`modal_is-opened`);
+  openModal(profileEditModal);
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 });
 
 profileClsBtn.addEventListener(`click`, function () {
-  profileEditModal.classList.remove(`modal_is-opened`);
+  closeModal(profileEditModal);
 });
 
 profileAddBtn.addEventListener(`click`, function () {
-  newPostModal.classList.add(`modal_is-opened`);
+  openModal(newPostModal);
 });
 newPostClsBtn.addEventListener(`click`, function () {
-  newPostModal.classList.remove(`modal_is-opened`);
+  closeModal(newPostModal);
 });
 
 initialCards.forEach(function (card) {
