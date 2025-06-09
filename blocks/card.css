@@ -1,5 +1,6 @@
 .card {
   max-width: 413px;
+  position: relative;
 }
 
 .card__image {
@@ -29,13 +30,29 @@
   font-weight: 500;
 }
 
+.card__delete-btn {
+  background-image: url(../images/deleteBtn.svg);
+  border: none;
+  border-radius: 20px;
+  background-color: transparent;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.card__delete-btn:hover {
+  border: none;
+  background-color: rgba(255, 101, 101);
+}
+
 .card__like-button {
   /*you put needs correcting for like button because is not the dark one but on figma if its hover it use black icon. when is not hover , it uses reguler icon*/
   background-image: url(../images/like_icon.svg);
   opacity: 0.4;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+
   width: 23px;
   height: 20px;
   border: none;
@@ -45,10 +62,19 @@
   /*cursor porinter in the hover psuedo code*/
 }
 
+.card__like-button_active {
+  background-image: url(..//images/likeBtn.svg);
+  opacity: 1;
+}
+
 .card__like-button:hover {
   cursor: pointer;
 
   opacity: 1;
+}
+
+.card__like-button_active:hover {
+  opacity: 0.4;
 }
 @media screen and (max-width: 627px) {
   .card__title {
