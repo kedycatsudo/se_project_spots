@@ -152,6 +152,9 @@
 }
 
 @media screen and (max-width: 627px) {
+  .modal {
+    padding: 0; /* Remove default modal padding on mobile */
+  }
   .modal__container {
     display: flex;
     flex-direction: column;
@@ -159,6 +162,14 @@
     width: 100%;
     padding: 12px;
     gap: 24px;
+  }
+
+  .modal__image-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
   }
 
   .modal__title {
@@ -186,5 +197,8 @@
   }
   .modal__image {
     max-width: unset;
+  }
+  .modal__caption {
+    font-size: 16px;
   }
 }

@@ -11,6 +11,10 @@
   display: block;
 }
 
+.card__image {
+  cursor: pointer;
+}
+
 .card__content {
   display: flex;
   align-items: center;
@@ -64,7 +68,9 @@
 
 .card__like-button_active {
   background-image: url(..//images/likeBtn.svg);
+  background-color: transparent;
   opacity: 1;
+  background-repeat: no-repeat;
 }
 
 .card__like-button:hover {

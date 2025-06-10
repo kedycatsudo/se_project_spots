@@ -21,7 +21,6 @@ function handleNewPostFormSubmit(evt) {
   };
   const newCardElement = getCardElement(newCardData);
   cardsList.prepend(newCardElement);
-  console.log(newCardElement);
   closeModal(newPostModal);
   postModalForm.reset();
 }
@@ -42,21 +41,25 @@ function getCardElement(data) {
   });
 
   cardImgEl.src = data.link;
+  cardImgEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
   cardImgEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
+    previewImageEl.alt = data.name;
     previewCaptionEl.textContent = data.name;
     openModal(previewModal);
     previewModalCloseBtn.addEventListener("click", () => {
-      closeModal(previewModal);
+      closeModal(
+        previewModal
+      ); /*i tried to move the listener outside of the function but then all the images gone, i try to find the problem but i couldn`t so i leave it like that. */
     });
   });
 
   return cardElement;
 }
 
-let initialCards = [
+const initialCards = [
   {
     name: "Golden Gate Bridge",
     link: " https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
