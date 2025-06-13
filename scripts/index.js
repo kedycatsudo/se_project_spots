@@ -1,3 +1,34 @@
+const profileEditbtn = document.querySelector(`.profile__edit-btn`);
+const profileEditModal = document.querySelector(`#edit-profile-modal`);
+const profileClsBtn = profileEditModal.querySelector(`.modal__close-btn`);
+
+const profileAddBtn = document.querySelector(`.profile__add-btn`);
+const newPostModal = document.querySelector(`#new-post-modal`);
+const newPostClsBtn = newPostModal.querySelector(`.modal__close-btn`);
+
+const profileName = document.querySelector(`.profile__name`);
+const profileDescription = document.querySelector(`.profile__description`);
+
+const profileNameInput = document.querySelector(`#profile-name-input`);
+const profileDescriptionInput = document.querySelector(
+  `#profile-description-input`
+);
+
+const profileModalForm = profileEditModal.querySelector(`.modal__form`);
+const postModalForm = newPostModal.querySelector(`.modal__form`);
+
+const cardImgLink = newPostModal.querySelector(`#card-img-input`);
+const cardCaptionInput = newPostModal.querySelector(`#card-caption-input`);
+
+const previewModal = document.querySelector("#preview-modal");
+const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
+const previewImageEl = previewModal.querySelector(".modal__image");
+const previewCaptionEl = previewModal.querySelector(".modal__caption");
+
+const cardTemplate = document
+  .querySelector(`#card-template`)
+  .content.querySelector(".card");
+const cardsList = document.querySelector(".cards__list");
 function openModal(modalElement) {
   modalElement.classList.add("modal_is-opened");
 }
@@ -49,13 +80,12 @@ function getCardElement(data) {
     previewImageEl.alt = data.name;
     previewCaptionEl.textContent = data.name;
     openModal(previewModal);
-    previewModalCloseBtn.addEventListener("click", () => {
-      closeModal(
-        previewModal
-      ); /*i tried to move the listener outside of the function but then all the images gone, i try to find the problem but i couldn`t so i leave it like that. */
-    });
   });
-
+  previewModalCloseBtn.addEventListener("click", () => {
+    closeModal(
+      previewModal
+    ); /*i tried to move the listener outside of the function but then all the images gone, i try to find the problem but i couldn`t so i leave it like that. */
+  });
   return cardElement;
 }
 
@@ -94,38 +124,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
-
-const profileEditbtn = document.querySelector(`.profile__edit-btn`);
-const profileEditModal = document.querySelector(`#edit-profile-modal`);
-const profileClsBtn = profileEditModal.querySelector(`.modal__close-btn`);
-
-const profileAddBtn = document.querySelector(`.profile__add-btn`);
-const newPostModal = document.querySelector(`#new-post-modal`);
-const newPostClsBtn = newPostModal.querySelector(`.modal__close-btn`);
-
-const profileName = document.querySelector(`.profile__name`);
-const profileDescription = document.querySelector(`.profile__description`);
-
-const profileNameInput = document.querySelector(`#profile-name-input`);
-const profileDescriptionInput = document.querySelector(
-  `#profile-description-input`
-);
-
-const profileModalForm = profileEditModal.querySelector(`.modal__form`);
-const postModalForm = newPostModal.querySelector(`.modal__form`);
-
-const cardImgLink = newPostModal.querySelector(`#card-img-input`);
-const cardCaptionInput = newPostModal.querySelector(`#card-caption-input`);
-
-const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
-const previewImageEl = previewModal.querySelector(".modal__image");
-const previewCaptionEl = previewModal.querySelector(".modal__caption");
-
-const cardTemplate = document
-  .querySelector(`#card-template`)
-  .content.querySelector(".card");
-const cardsList = document.querySelector(".cards__list");
 
 profileModalForm.addEventListener(`submit`, handleProfileFormSubmit);
 postModalForm.addEventListener(`submit`, handleNewPostFormSubmit);
