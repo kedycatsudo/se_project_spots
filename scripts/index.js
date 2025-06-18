@@ -5,6 +5,7 @@ const profileCloseBtn = profileEditModal.querySelector(`.modal__close-btn`);
 const profileAddBtn = document.querySelector(`.profile__add-btn`);
 const newPostModal = document.querySelector(`#new-post-modal`);
 const newPostCloseBtn = newPostModal.querySelector(`.modal__close-btn`);
+const SaveButton = newPostModal.querySelector(`.modal__submit-btn`);
 
 const profileName = document.querySelector(`.profile__name`);
 const profileDescription = document.querySelector(`.profile__description`);
@@ -16,6 +17,9 @@ const profileDescriptionInput = document.querySelector(
 
 const profileModalForm = profileEditModal.querySelector(`.modal__form`);
 const postModalForm = newPostModal.querySelector(`.modal__form`);
+const inputList = Array.from(
+  profileModalForm.querySelectorAll(settings.inputSelector)
+);
 
 const cardImgLink = newPostModal.querySelector(`#card-img-input`);
 const cardCaptionInput = newPostModal.querySelector(`#card-caption-input`);
@@ -29,35 +33,33 @@ const cardTemplate = document
   .querySelector(`#card-template`)
   .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
+
+function handleOverlayClick(evt) {
+  if (
+    evt.target.classList.contains("modal") &&
+    evt.target.classList.contains("modal_is-opened")
+  ) {
+    closeModal(evt.target);
+  }
+}
+
+function handleEscClose(evt) {
+  const openedModal = document.querySelector(".modal_is-opened");
+  if (evt.key === "Escape" && openedModal) {
+    closeModal(openedModal);
+  }
+}
+
 function openModal(modalElement) {
   modalElement.classList.add("modal_is-opened");
-  function handleOverlayClick(evt) {
-    if (evt.target === modalElement) {
-      closeModal(modalElement);
-    }
-  }
-  function handleEscClose(evt) {
-    if (evt.key === "Escape") {
-      closeModal(modalElement);
-    }
-  }
   modalElement.addEventListener("mousedown", handleOverlayClick);
   document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modalElement) {
   modalElement.classList.remove("modal_is-opened");
-  if (modalElement._handleOverlayClick) {
-    modalElement.removeEventListener(
-      "mousedown",
-      modalElement._handleOverlayClick
-    );
-    delete modalElement._handleOverlayClick;
-  }
-  if (modalElement._handleEscClose) {
-    document.removeEventListener("keydown", modalElement._handleEscClose);
-    delete modalElement._handleEscClose;
-  }
+  modalElement.removeEventListener("mousedown", handleOverlayClick);
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -78,6 +80,8 @@ function handleNewPostFormSubmit(evt) {
   cardsList.prepend(newCardElement);
   closeModal(newPostModal);
   postModalForm.reset();
+  SaveButton.classList.add(`modal__submit-btn-disabled`);
+  SaveButton.disabled = true;
 }
 
 function getCardElement(data) {
@@ -106,9 +110,7 @@ function getCardElement(data) {
     openModal(previewModal);
   });
   previewModalCloseBtn.addEventListener("click", () => {
-    closeModal(
-      previewModal
-    ); /*i tried to move the listener outside of the function but then all the images gone, i try to find the problem but i couldn`t so i leave it like that. */
+    closeModal(previewModal);
   });
   return cardElement;
 }
@@ -156,7 +158,7 @@ profileEditBtn.addEventListener(`click`, function () {
   openModal(profileEditModal);
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  resetValidation(profileModalForm, settings); // Clear errors and classes
+  resetValidation(profileModalForm, inputList, settings);
   toggleButtonState(
     Array.from(profileModalForm.querySelectorAll(settings.inputSelector)),
     profileModalForm.querySelector(settings.submitButtonSelector),
@@ -167,10 +169,12 @@ profileEditBtn.addEventListener(`click`, function () {
 profileCloseBtn.addEventListener(`click`, function () {
   closeModal(profileEditModal);
 });
-
 profileAddBtn.addEventListener("click", function () {
   postModalForm.reset(); // Clear previous input values
-  resetValidation(postModalForm, settings); // Clear errors and disable button
+  const inputList = Array.from(
+    postModalForm.querySelectorAll(settings.inputSelector)
+  );
+  resetValidation(postModalForm, inputList, settings);
   openModal(newPostModal);
 });
 newPostCloseBtn.addEventListener(`click`, function () {

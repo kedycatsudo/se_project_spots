@@ -21,25 +21,12 @@ const toggleButtonState = (inputList, buttonElement, config) => {
     buttonElement.classList.remove(config.inactiveButtonClass);
   }
 };
-function resetValidation(formElement, config) {
-  const inputList = Array.from(
-    formElement.querySelectorAll(config.inputSelector)
-  );
+const resetValidation = (formElement, inputList, config) => {
   inputList.forEach((inputElement) => {
-    // Remove error class from input
-    inputElement.classList.remove(config.inputErrorClass);
-    // Hide error message
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    if (errorElement) {
-      errorElement.textContent = "";
-      errorElement.classList.remove(config.errorClass);
-    }
+    hideInputError(formElement, inputElement, config);
   });
+};
 
-  // Update submit button state
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, config);
-}
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -78,10 +65,7 @@ const setEventListeners = (formEl, config) => {
   const buttonElement = formEl.querySelector(config.submitButtonSelector);
   toggleButtonState(inputList, buttonElement, config);
 
-  hasInvalidInput(inputList);
-  const disabledButton = (buttonElement, config) => {
-    buttonElement.disabled = true;
-  };
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
