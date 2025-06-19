@@ -80,8 +80,7 @@ function handleNewPostFormSubmit(evt) {
   cardsList.prepend(newCardElement);
   closeModal(newPostModal);
   postModalForm.reset();
-  SaveButton.classList.add(`modal__submit-btn-disabled`);
-  SaveButton.disabled = true;
+  toggleButtonState(inputList, SaveButton, settings);
 }
 
 function getCardElement(data) {
