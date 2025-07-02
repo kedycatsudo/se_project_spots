@@ -1,3 +1,29 @@
+import "./index.css";
+import image1 from "../images/Logo.svg";
+import image2 from "../images/avatar.jpg";
+import image3 from "../images/pencil_icon.svg";
+import image4 from "../images/plus_icon.svg";
+
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  toggleButtonState,
+} from "../scripts/validation.js";
+
+const image1El = document.querySelector("#image1");
+image1El.src = image1;
+image1El.alt = "Logo";
+const image2El = document.querySelector("#image2");
+image2El.src = image2;
+image2El.alt = "Profile image";
+const image3El = document.querySelector("#image3");
+image3El.src = image3;
+image3El.alt = "Edit button img";
+const image4El = document.querySelector("#image4");
+image4El.src = image4;
+image4El.alt = "Plus icon";
+
 const profileEditBtn = document.querySelector(`.profile__edit-btn`);
 const profileEditModal = document.querySelector(`#edit-profile-modal`);
 const profileCloseBtn = profileEditModal.querySelector(`.modal__close-btn`);
@@ -184,3 +210,4 @@ initialCards.forEach(function (card) {
   const cardElement = getCardElement(card);
   cardsList.append(cardElement);
 });
+enableValidation(settings);
