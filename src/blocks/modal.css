@@ -14,8 +14,7 @@
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
-.modal__image-container {
+.delete__ .modal__image-container {
   position: relative;
   max-width: 80vw;
   max-height: 80vh;
@@ -28,6 +27,9 @@
   object-fit: contain;
   display: block;
   border-radius: 8px;
+}
+
+.modal__delete-btn {
 }
 
 .modal__caption {
@@ -62,11 +64,47 @@
   display: flex;
   flex-direction: column;
 }
+.modal__delete-form {
+  display: flex;
+  justify-content: space-around;
+}
 
+.modal__submit-btn-delete {
+  font-family: Poppins, sans-serif;
+  width: 156px;
+  height: 52px;
+  background: rgba(255, 101, 101, 1);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+.modal__submit-btn-delete:hover {
+  cursor: pointer;
+}
+.modal__submit-btn-cancel {
+  font-family: Poppins, sans-serif;
+  width: 156px;
+  height: 52px;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+
+  border-radius: 8px;
+}
+.modal__submit-btn-cancel:hover {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+}
 .modal__label {
   margin-bottom: 32px;
   display: block;
-  font-family: Poppins, sans-serif;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
