@@ -38,12 +38,17 @@ const profileEditBtn = document.querySelector(`.profile__edit-btn`);
 const profileEditModal = document.querySelector(`#edit-profile-modal`);
 const profileCloseBtn = profileEditModal.querySelector(`.modal__close-btn`);
 
+let selectedCard, selectedCardId;
+
 const profileAddBtn = document.querySelector(`.profile__add-btn`);
 const newPostModal = document.querySelector(`#new-post-modal`);
 const newPostCloseBtn = newPostModal.querySelector(`.modal__close-btn`);
 const SaveButton = newPostModal.querySelector(`.modal__submit-btn`);
 
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__delete-form");
+const submitDeleteBtn = deleteModal.querySelector(".modal__submit-btn-delete");
+const cancelDeleteBtn = deleteModal.querySelector(".modal__submit-btn-cancel");
 
 const profileName = document.querySelector(`.profile__name`);
 const profileDescription = document.querySelector(`.profile__description`);
@@ -67,9 +72,6 @@ const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
-const cardTemplate = document
-  .querySelector(`#card-template`)
-  .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
 
 function handleOverlayClick(evt) {
@@ -127,7 +129,7 @@ function handleNewPostFormSubmit(evt) {
   api
     .postCard(newCardData)
     .then((card) => {
-      const newCardElement = getCardElement(newCardData);
+      const newCardElement = getCardElement(card);
       cardsList.prepend(newCardElement);
       closeModal(newPostModal);
       postModalForm.reset();
@@ -139,32 +141,56 @@ function handleNewPostFormSubmit(evt) {
 }
 function handleProfileImageSubmit(evt) {
   evt.preventDefault();
+  console.log("Deleting card with ID:", selectedCardId); // Add this line
   api
-    .editAvatarInfo(ImageInput.value)
-    .then((data) => {
-      console.log(data.avatar);
-      closeModal(imageModal);
+    .deleteCard(selectedCardId)
+    .then(() => {
+      if (selectedCard) {
+        selectedCard.remove();
+      }
+      closeModal(deleteModal);
     })
     .catch((err) => {
       console.log(err);
     });
 }
-function handleDeleteCard(evt) {
+function handleDeleteCard(cardElement, cardId) {
   openModal(deleteModal);
-  //evt.target.closest(".card").remove();
+
+  selectedCard = cardElement;
+  selectedCardId = cardId;
+}
+
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      if (selectedCard) {
+        selectedCard.remove();
+      }
+      closeModal(deleteModal);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
+  const cardTemplate = document.querySelector("#card-template");
+  const cardFragment = cardTemplate.content.cloneNode(true);
+  const cardElement = cardFragment.querySelector(".card");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImgEl = cardElement.querySelector(".card__image");
   const likeBtnEl = cardElement.querySelector(".card__like-button");
+  const deleteBtnEl = cardElement.querySelector(".card__delete-btn");
 
   likeBtnEl.addEventListener("click", function () {
     likeBtnEl.classList.toggle("card__like-button_active");
   });
 
-  const deleteBtnEl = cardElement.querySelector(".card__delete-btn");
-  deleteBtnEl.addEventListener("click", handleDeleteCard);
+  deleteBtnEl.addEventListener("click", (evt) => {
+    handleDeleteCard(cardElement, data._id);
+  });
 
   cardImgEl.src = data.link;
   cardImgEl.alt = data.name;
@@ -244,7 +270,11 @@ api
 
 profileModalForm.addEventListener(`submit`, handleProfileFormSubmit);
 postModalForm.addEventListener(`submit`, handleNewPostFormSubmit);
-
+deleteForm.addEventListener(`submit`, handleDeleteSubmit);
+cancelDeleteBtn.addEventListener("click", (evt) => {
+  evt.preventDefault(); // Prevent form submission if button is inside the form
+  closeModal(deleteModal);
+});
 profileImageBtn.addEventListener("click", function () {
   openModal(imageModal);
   console.log(imageModal);
