@@ -89,6 +89,18 @@ class Api {
     });
   }
 
+  handleLiked(id, isLiked) {
+    return fetch(`${this.baseUrl}/cards/${id}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
+      headers: this.headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      Promise.reject(`Error:${res.status}`);
+    });
+  }
+
   // other methods for working with the API
 }
 
