@@ -1,7 +1,6 @@
 /*IMPORT*/
 import "./index.css";
 import image1 from "../images/Logo.svg";
-import image2 from "../images/avatar.jpg";
 import image3 from "../images/pencil_icon.svg";
 import image4 from "../images/plus_icon.svg";
 import profile__pencil from "../images/pecil_light_icon.svg";
@@ -18,8 +17,7 @@ const image1El = document.querySelector("#image1");
 image1El.src = image1;
 image1El.alt = "Logo";
 const image2El = document.querySelector("#image2");
-image2El.src = image2;
-image2El.alt = "Profile image";
+
 const image3El = document.querySelector("#image3");
 image3El.src = image3;
 image3El.alt = "Edit button img";
@@ -269,9 +267,9 @@ api
       const cardElement = getCardElement(card);
       cardsList.append(cardElement);
     });
-    user.name = "Bessie Coleman";
-    user.about = "description";
-    user.avatar = `https://practicum-content.s3.amazonaws.com/resources/avatar_placeholder_1704989734.svg`;
+    profileName.textContent = user.name;
+    profileDescription.textContent = user.about;
+    image2El.src = user.avatar;
   })
   .catch((err) => {
     console.log(err);
