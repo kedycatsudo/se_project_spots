@@ -33,6 +33,7 @@ let selectedCard, selectedCardId;
 const profilePencilEl = document.querySelector("#profile__pencil");
 profilePencilEl.src = profile__pencil;
 const imageModal = document.querySelector(`#img-modal`);
+const avatarEditForm = imageModal.querySelector("#profile-img-form");
 const imageCloseBtn = imageModal.querySelector(".modal__close-btn");
 const ImageForm = imageModal.querySelector(".modal__form");
 const ImageInput = ImageForm.querySelector("#profile-img-input");
@@ -162,18 +163,14 @@ function handleProfileImageSubmit(evt) {
   const submitter = evt.submitter;
 
   setButtonText(submitter, true, "Saving...", "Save");
-  console.log("Deleting card with ID:", selectedCardId); // Add this line
+
   api
-    .deleteCard(selectedCardId)
-    .then(() => {
-      if (selectedCard) {
-        selectedCard.remove();
-      }
-      closeModal(deleteModal);
+    .editAvatarInfo(ImageInput.value)
+    .then((data) => {
+      image2El.src = data.avatar;
+      closeModal(imageModal);
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch((err) => console.log(err))
     .finally(() => {
       setButtonText(submitter, false, "Saving...", "Save");
     });
@@ -284,6 +281,8 @@ api
 profileModalForm.addEventListener(`submit`, handleProfileFormSubmit);
 postModalForm.addEventListener(`submit`, handleNewPostFormSubmit);
 deleteForm.addEventListener(`submit`, handleDeleteSubmit);
+avatarEditForm.addEventListener(`submit`, handleProfileImageSubmit);
+
 cancelDeleteBtn.addEventListener("click", (evt) => {
   evt.preventDefault(); // Prevent form submission if button is inside the form
   closeModal(deleteModal);
@@ -295,7 +294,6 @@ profileImageBtn.addEventListener("click", function () {
 imageCloseBtn.addEventListener("click", () => {
   closeModal(imageModal);
 });
-imageModal.addEventListener(`submit`, handleProfileImageSubmit);
 
 profileEditBtn.addEventListener(`click`, function () {
   openModal(profileEditModal);
