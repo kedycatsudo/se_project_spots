@@ -33,8 +33,8 @@ profilePencilEl.src = profile__pencil;
 const imageModal = document.querySelector(`#img-modal`);
 const avatarEditForm = imageModal.querySelector("#profile-img-form");
 const imageCloseBtn = imageModal.querySelector(".modal__close-btn");
-const ImageForm = imageModal.querySelector(".modal__form");
-const ImageInput = ImageForm.querySelector("#profile-img-input");
+const imageForm = imageModal.querySelector(".modal__form");
+const imageInput = imageForm.querySelector("#profile-img-input");
 const profileImageBtn = document.querySelector(".profile__img-btn");
 
 //PROFILE INFO EDIT ELEMENTS
@@ -144,7 +144,7 @@ function handleNewPostFormSubmit(evt) {
     .postCard(newCardData)
     .then((card) => {
       const newCardElement = getCardElement(card);
-      cardsList.append(newCardElement);
+      cardsList.prepend(newCardElement);
       closeModal(newPostModal);
       postModalForm.reset();
       toggleButtonState(inputList, SaveButton, settings);
@@ -163,7 +163,7 @@ function handleProfileImageSubmit(evt) {
   setButtonText(submitter, true, "Saving...", "Save");
 
   api
-    .editAvatarInfo(ImageInput.value)
+    .editAvatarInfo(imageInput.value)
     .then((data) => {
       image2El.src = data.avatar;
       closeModal(imageModal);
@@ -287,7 +287,6 @@ cancelDeleteBtn.addEventListener("click", (evt) => {
 });
 profileImageBtn.addEventListener("click", function () {
   openModal(imageModal);
-  console.log(imageModal);
 });
 imageCloseBtn.addEventListener("click", () => {
   closeModal(imageModal);

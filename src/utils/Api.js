@@ -5,6 +5,12 @@ class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
   getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
@@ -21,12 +27,7 @@ class Api {
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
   editUserInfo({ name, about }) {
     return fetch(`${this.baseUrl}/users/me`, {
@@ -37,12 +38,7 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   postCard({ name, link }) {
@@ -54,12 +50,7 @@ class Api {
         name,
         link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   editAvatarInfo(avatar) {
@@ -70,35 +61,20 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
   deleteCard(id) {
     return fetch(`${this.baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   handleLiked(id, isLiked) {
     return fetch(`${this.baseUrl}/cards/${id}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   // other methods for working with the API
