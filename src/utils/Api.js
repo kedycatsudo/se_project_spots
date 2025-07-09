@@ -17,12 +17,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {

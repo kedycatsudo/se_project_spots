@@ -1,4 +1,5 @@
 .modal {
+  font-family: Poppins, sans-serif;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -148,15 +149,15 @@
 
 .modal__close-btn {
   position: absolute;
-  top: 32px;
-  right: 50px;
+  top: 0;
+  right: -52px;
   width: 40px;
   height: 40px;
   border: none;
   background-color: transparent;
   padding: 0;
   margin: 0;
-  opacity: 40%;
+  opacity: 1;
   background-image: url(../images/close_icon.svg);
 }
 
@@ -231,8 +232,8 @@
   }
 
   .modal__close-btn {
-    top: 12px;
-    right: 12px;
+    top: -56px;
+    right: -10px;
   }
   .modal__label {
     margin: 0 0 24px;
@@ -252,5 +253,14 @@
   }
   .modal__caption {
     font-size: 16px;
+  }
+  .modal__delete-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal__submit-btn-delete {
+    margin-bottom: 12px;
   }
 }

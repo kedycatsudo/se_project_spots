@@ -157,6 +157,7 @@ function handleNewPostFormSubmit(evt) {
     });
 }
 function handleProfileImageSubmit(evt) {
+  console.log(`asdsad`);
   evt.preventDefault();
   const submitter = evt.submitter;
 
@@ -165,7 +166,11 @@ function handleProfileImageSubmit(evt) {
   api
     .editAvatarInfo(imageInput.value)
     .then((data) => {
+      debugger;
       image2El.src = data.avatar;
+
+      imageForm.reset();
+      submitter.disabled = true;
       closeModal(imageModal);
     })
     .catch((err) => console.log(err))
@@ -286,6 +291,7 @@ cancelDeleteBtn.addEventListener("click", (evt) => {
   closeModal(deleteModal);
 });
 profileImageBtn.addEventListener("click", function () {
+  console.log(`afsdsd`);
   openModal(imageModal);
 });
 imageCloseBtn.addEventListener("click", () => {
