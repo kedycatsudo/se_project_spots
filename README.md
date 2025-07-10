@@ -38,26 +38,25 @@ Spots is a responsive social media platform where users can share, explore, and 
 
 ✨ Key Features
 📱 Responsive Design
-
 Adapts to all screen sizes using media queries and flexible layouts.
+
 👤 User Profile Section
-
 Users can view and edit profile information, enhancing personalization.
+
 🖼️ Edit Profile Image
-
 Users can upload or update their profile image via a modal interface.
+
 🧾 Form Validations
-
 All user input fields are validated in real-time with custom error messages.
+
 🖼️ Photo Gallery + Like Button
-
 Photos are displayed in a card-based grid, each with a like button for engagement.
+
 🧩 Clean Grid Layout
-
 Photos are arranged consistently using CSS Grid and Flexbox for performance and style.
+
 🧠 Modular Architecture (OOP)
-
 Features a well-structured codebase with ES6 classes, making it scalable and easier to maintain.
-🔗 API Integration
 
+🔗 API Integration
 The app fetches and submits user and photo data using RESTful API calls.
