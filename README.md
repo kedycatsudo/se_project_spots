@@ -60,3 +60,5 @@ Features a well-structured codebase with ES6 classes, making it scalable and eas
 
 🔗 API Integration
 The app fetches and submits user and photo data using RESTful API calls.
+
+Project Link: https://kedycatsudo.github.io/se_project_spots/
